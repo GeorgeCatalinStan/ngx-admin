@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
+import {Component} from '@angular/core';
+import {LocalDataSource} from 'ng2-smart-table';
 
-import { SmartTableData } from '../../../@core/data/smart-table';
+import {SmartTableData} from '../../../@core/data/smart-table';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -12,7 +12,7 @@ export class SmartTableComponent {
 
   settings = {
     add: {
-      addButtonContent: '<i class="nb-plus"></i>',
+      addButtonContent: '<i class="nb-plus" (click)="createTable()"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
     },
@@ -58,6 +58,10 @@ export class SmartTableComponent {
   constructor(private service: SmartTableData) {
     const data = this.service.getData();
     this.source.load(data);
+  }
+
+  createTable() {
+    console.log('create');
   }
 
   onDeleteConfirm(event): void {
